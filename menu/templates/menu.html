@@ -13,7 +13,7 @@
       {% for item in items %}
         {% if item.category.name == 'HotCoffee' %}
           <a href={% url 'product' item.id %} class='cursor-pointer'>
-            <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl"></img>
+            <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl border-4 border-[#3F281C]"></img>
             <h3 class="text-2xl font-semibold">{{ item.name }}</h3>
             <p class="text-lg font-medium">${{ item.price }}</p>
           </a>
@@ -26,7 +26,7 @@
       {% for item in items %}
         {% if item.category.name == 'ColdCoffee' %}
           <a href={% url 'product' item.id %} class='cursor-pointer'>
-            <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl"></img>
+            <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl border-4 border-[#3F281C]"></img>
             <h3 class="text-2xl font-semibold">{{ item.name }}</h3>
             <p class="text-lg font-medium">${{ item.price }}</p>
           </a>
@@ -39,7 +39,7 @@
       {% for item in items %}
         {% if item.category.name == 'Breakfast' %}
           <a href={% url 'product' item.id %} class='cursor-pointer'>
-            <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl"></img>
+            <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl border-4 border-[#3F281C]"></img>
             <h3 class="text-2xl font-semibold">{{ item.name }}</h3>
             <p class="text-lg font-medium">${{ item.price }}</p>
           </a>
@@ -52,7 +52,7 @@
       {% for item in items %}
         {% if item.category.name == 'Snacks' %}
           <a href={% url 'product' item.id %} class='cursor-pointer'>
-            <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl"></img>
+            <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl border-4 border-[#3F281C]"></img>
             <h3 class="text-2xl font-semibold">{{ item.name }}</h3>
             <p class="text-lg font-medium">${{ item.price }}</p>
           </a>
