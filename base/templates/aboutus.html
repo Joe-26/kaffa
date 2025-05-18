@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static tailwind_tags %}
+
+{% block title %}About Us{% endblock title %}
+
+{% block content %}
+<!--About Company Content-->
+<div class="flex w-full justify-center mb-10">
+    <div class="w-1/2 font-light">
+        <h1 class="flex text-6xl font-bold mb-10">Our Company</h1>
+        <img
+            src="{% static 'img/coffee1.jpg' %}"
+            alt="coffee 1"
+            class="rounded-4xl mb-10"
+        />
+        <p>
+            At Kaffa, we’re more than just a coffee shop — we’re a celebration of
+            origin, culture, and community. Inspired by the Ethiopian region of
+            Kaffa, the legendary birthplace of coffee, our mission is to honor the
+            roots of this timeless drink while creating a space where people can
+            slow down, connect, and savor the moment.
+        </p>
+        <br />
+        <p>
+            Our journey began with a passion for rich flavors and authentic
+            storytelling. Every bean we brew is carefully selected to reflect the
+            bold spirit and deep heritage of Ethiopian coffee. From single-origin
+            classics to modern blends, our menu is curated to take you on a
+            sensory journey — one cup at a time.
+        </p>
+        <br />
+        <p>
+            But Kaffa isn’t just about what’s in your mug. It’s about the
+            experience that surrounds it — the welcoming aroma when you walk in,
+            the thoughtful conversations over cappuccino, and the care in every
+            pour. We believe in crafting not only exceptional coffee but also
+            meaningful moments.
+        </p>
+        <br />
+        <p>
+            Whether you’re a curious explorer, a coffee aficionado, or simply in
+            search of your daily ritual, Kaffa invites you to discover the
+            origins, taste the tradition, and feel right at home.
+        </p>
+    </div>
+</div>
+{% endblock content%}

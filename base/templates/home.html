@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load static tailwind_tags %}
+
+{% block title %}Kaffa{% endblock title %}
+
+{% block content %}
+<!--Homepage-->
+<div>
+    <!--Home Banner-->
+    <div
+      class="bg-amber-100 flex flex-row justify-between items-center gap-8 mb-5"
+    >
+      <div class="basis-1/2">
+        <img
+          src="{% static 'img/machine.jpg' %}"
+          alt="coffee-machine"
+          class=""
+        />
+      </div>
+      <div class="basis-1/2">
+        <h1 class="text-4xl">KAFFA - Brewed Where Legends Began</h1>
+        <p>
+          Bold origins. Rich flavors. Crafted for those who savor the story in
+          every sip. Inspired by the birthplace of coffee, we bring you bold
+          brews and timeless flavors steeped in heritage.
+        </p>
+      </div>
+    </div>
+
+    <!--Popular Menu-->
+    <div class="px-10 mb-5 bg-yellow-200">
+      <div class="flex justify-between mb-5">
+        <div class="text-4xl">Our Most Popular Items</div>
+        <a
+          href="menu"
+          class="font-medium rounded-full border-1 px-4 py-2 hover:bg-amber-950 hover:text-white transition delay-150 cursor-pointer"
+        >
+          See All
+        </a>
+      </div>
+      <div class="grid grid-cols-3 gap-4">
+        <div class="">
+          <img
+            src="{% static 'img/icedLatte.jpg' %}"
+            alt="coffee-lattee"
+            class="w-full h-80 object-cover rounded-xl"
+          />
+          <p class="text-2xl font-semibold">Café Lattee</p>
+        </div>
+        <div>
+          <img
+            src="{% static 'img/cappuccino.jpg' %}"
+            alt="coffee-cappuccino"
+            class="w-full h-80 object-cover rounded-xl"
+          />
+          <p class="text-2xl font-semibold">Cappuccino</p>
+        </div>
+        <div>
+          <img
+            src="{% static 'img/frappe.jpg' %}"
+            alt="coffee-frappe"
+            class="w-full h-80 object-cover rounded-xl"
+          />
+          <p class="text-2xl font-semibold">Frappé</p>
+        </div>
+      </div>
+    </div>
+    <!--Café Special Article 1-->
+    <div
+      class="flex flex-row justify-between items-center gap-8 mb-5 bg-green-200"
+    >
+      <div class="basis-1/2 px-10">
+        <h2 class="text-4xl">From Ethiopia, With Every Sip</h2>
+        <p class="text-stone-500">
+          At Kaffa, every cup begins where coffee itself began — in the lush
+          highlands of Ethiopia. We honor this legendary birthplace by
+          sourcing beans that capture the region’s bold spirit and rich
+          complexity. Our blends are more than just beverages; they’re a
+          celebration of centuries-old traditions infused with contemporary
+          craft. From the earthy aroma to the vibrant finish, each sip is a
+          journey back to the roots of coffee culture.
+        </p>
+      </div>
+      <div class="basis-1/2">
+        <img
+          src="{% static 'img/beans1.jpg' %}"
+          alt="coffee-machine"
+          class=""
+        />
+      </div>
+    </div>
+    <!--Café Special Article 2-->
+    <div
+      class="flex flex-row justify-between items-center gap-8 mb-5 bg-cyan-200"
+    >
+      <div class="basis-1/2">
+        <img
+          src="{% static 'img/powder.jpg' %}"
+          alt="coffee-machine"
+          class=""
+        />
+      </div>
+
+      <div class="basis-1/2 px-10">
+        <h2 class="text-4xl">More Than Coffee — It’s Connection</h2>
+        <p class="text-stone-500">
+          Whether you’re here for a quiet moment or a conversation over
+          cappuccino, Kaffa delivers more than caffeine — it delivers
+          connection. We roast with care, brew with precision, and serve with
+          purpose. Because at Kaffa, coffee isn’t just a drink — it’s a
+          ritual, a story, and a global legacy brought to life in every cup.
+        </p>
+      </div>
+    </div>
+    <!--Customer Review-->
+    <div class="px-10 mb-5 bg-yellow-200">
+      <div class="text-4xl mb-5">What Our Guests Say About Us</div>
+      <div>
+        <p>⭐️⭐️⭐️⭐️⭐️</p>
+        <p>
+          “Authentic taste like no other.” I’ve tried coffee all over the
+          world, but there’s something deeply special about Kaffa. The flavors
+          are bold yet smooth, and every sip feels like a tribute to
+          Ethiopia’s roots. I’m hooked.
+        </p>
+        <p class="text-stone-500">— Aria M., Coffee Enthusiast</p>
+      </div>
+      <div>
+        <p>⭐️⭐️⭐️⭐️⭐️</p>
+        <p>
+          “My new go-to spot for coffee and calm.” The atmosphere is warm,
+          modern, and welcoming — and the coffee? Out of this world. The
+          baristas really know their craft, and you can taste the quality in
+          every cup.
+        </p>
+        <p class="text-stone-500">— Daniel R., Local Regular</p>
+      </div>
+      <div>
+        <p>⭐️⭐️⭐️⭐️</p>
+        <p>
+          “It’s more than coffee. It’s culture.” Kaffa doesn’t just serve
+          great coffee — it tells a story with every blend. I love how they
+          honor Ethiopian heritage while delivering a top-tier café
+          experience. Truly unique.
+        </p>
+        <p class="text-stone-500">— Lina K., Cultural Curator & Traveler</p>
+      </div>
+    </div>
+  </div>
+{% endblock content%}
