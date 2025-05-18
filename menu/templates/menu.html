@@ -1,234 +1,64 @@
+{% extends "base.html" %}
 {% load static tailwind_tags %}
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menu: Kaffa Coffee Company</title>
+{% block title %}Menu{% endblock title %}
 
-    {% tailwind_css %}
-  </head>
-  <body>
-    <!--Nav Bar-->
-    <div
-      class="flex justify-between items-center p-10 mb-10 border-b-1 border-gray-400"
-    >
-      <!--Left Nav-->
-      <div class="flex items-center gap-10">
-        <a href="/" class="text-3xl font-medium">Kaffa</a>
-        <a
-          href="{% url 'menu' %}"
-          class="font-medium hover:underline hover:underline-offset-8 cursor-pointer"
-        >
-          MENU
-        </a>
-        <a
-          href="{% url 'about us' %}"
-          class="font-medium hover:underline hover:underline-offset-8 cursor-pointer"
-        >
-          ABOUT US
-        </a>
-      </div>
-
-      <!--Right Nav-->
-      <div class="flex items-center gap-5">
-        {% if user.is_authenticated %}
-          <span class="font-medium text-gray-700">Hello, {{ user.first_name|default:user.email }}!</span>
-          <a href="{% url 'cart' %}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-              <path d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
-            </svg>
-          </a>
-          <a href="{% url 'order' %}" class="flex gap-2 font-medium rounded-full border border-gray-400 px-4 py-2 hover:bg-black hover:text-white transition delay-150 cursor-pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-              <path fill-rule="evenodd" d="M2.625 6.75a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875 0A.75.75 0 0 1 8.25 6h12a.75.75 0 0 1 0 1.5h-12a.75.75 0 0 1-.75-.75ZM2.625 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 12a.75.75 0 0 1 .75-.75h12a.75.75 0 0 1 0 1.5h-12A.75.75 0 0 1 7.5 12Zm-4.875 5.25a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875 0a.75.75 0 0 1 .75-.75h12a.75.75 0 0 1 0 1.5h-12a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
-            </svg>
-            <p>Orders</p>            
-          </a>
-          <a
-            href="{% url 'signout' %}" {# Make sure you have a URL named 'signout' #}
-            class="font-medium rounded-full border border-gray-400 px-4 py-2 hover:bg-black hover:text-white transition delay-150 cursor-pointer"
-          >
-            Sign Out
-          </a>
-        {% else %}
-          <a
-            href="{% url 'signin' %}"
-            class="font-medium rounded-full border-1 px-4 py-2 hover:bg-black hover:text-white transition delay-150 cursor-pointer"
-          >
-            Sign In
-          </a>
-          <a
-            href="{% url 'signup' %}"
-            class="bg-black text-white font-medium border-1 rounded-full px-4 py-2 hover:bg-white hover:text-black transition delay-150 cursor-pointer"
-          >
-            Join now
+{% block content %}
+<!--MENU-->
+<div class="flex w-full justify-center mb-10">
+  <div class="w-1/2 font-light font-ancizar-sans text-[#3F281C]">
+    <h1 class="flex text-6xl font-bold mb-10 font-ranchers">Menu</h1>
+    <h2 class="flex text-5xl font-normal mb-5 border-b border-[#604333] pb-4">Hot Coffee</h2>
+    <div class="grid grid-cols-3 gap-8">
+      {% for item in items %}
+        {% if item.category.name == 'HotCoffee' %}
+          <a href={% url 'product' item.id %} class='cursor-pointer'>
+            <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl"></img>
+            <h3 class="text-2xl font-semibold">{{ item.name }}</h3>
+            <p class="text-lg font-medium">${{ item.price }}</p>
           </a>
         {% endif %}
-      </div>
+      {% endfor %}
     </div>
 
-    <!--MENU-->
-    <div class="flex w-full justify-center mb-10">
-      <div class="w-1/2 font-light">
-        <h1 class="flex text-6xl font-bold mb-10">Menu</h1>
-        <h2 class="flex text-4xl font-normal mb-5 border-b pb-4">Hot Coffee</h2>
-        <div class="grid grid-cols-3 gap-8">
-          {% for item in items %}
-            {% if item.category.name == 'HotCoffee' %}
-              <a href={% url 'product' item.id %} class='cursor-pointer'>
-                <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl"></img>
-                <h3 class="text-2xl font-semibold">{{ item.name }}</h3>
-                <p class="text-lg font-medium">${{ item.price }}</p>
-              </a>
-            {% endif %}
-          {% endfor %}
-        </div>
-
-        <h2 class="flex text-4xl font-normal mt-10 mb-5 border-b pb-4">Cold Coffee</h2>
-        <div class="grid grid-cols-3 gap-8">
-          {% for item in items %}
-            {% if item.category.name == 'ColdCoffee' %}
-              <a href={% url 'product' item.id %} class='cursor-pointer'>
-                <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl"></img>
-                <h3 class="text-2xl font-semibold">{{ item.name }}</h3>
-                <p class="text-lg font-medium">${{ item.price }}</p>
-              </a>
-            {% endif %}
-          {% endfor %}
-        </div>
-
-        <h2 class="flex text-4xl font-normal mt-10 mb-5 border-b pb-4">Breakfast</h2>
-        <div class="grid grid-cols-3 gap-8">
-          {% for item in items %}
-            {% if item.category.name == 'Breakfast' %}
-              <a href={% url 'product' item.id %} class='cursor-pointer'>
-                <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl"></img>
-                <h3 class="text-2xl font-semibold">{{ item.name }}</h3>
-                <p class="text-lg font-medium">${{ item.price }}</p>
-              </a>
-            {% endif %}
-          {% endfor %}
-        </div>
-
-        <h2 class="flex text-4xl font-normal mt-10 mb-5 border-b pb-4">Snacks</h2>
-        <div class="grid grid-cols-3 gap-8">
-          {% for item in items %}
-            {% if item.category.name == 'Snacks' %}
-              <a href={% url 'product' item.id %} class='cursor-pointer'>
-                <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl"></img>
-                <h3 class="text-2xl font-semibold">{{ item.name }}</h3>
-                <p class="text-lg font-medium">${{ item.price }}</p>
-              </a>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div>
+    <h2 class="flex text-5xl font-normal mt-10 mb-5 border-b border-[#604333] pb-4">Cold Coffee</h2>
+    <div class="grid grid-cols-3 gap-8">
+      {% for item in items %}
+        {% if item.category.name == 'ColdCoffee' %}
+          <a href={% url 'product' item.id %} class='cursor-pointer'>
+            <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl"></img>
+            <h3 class="text-2xl font-semibold">{{ item.name }}</h3>
+            <p class="text-lg font-medium">${{ item.price }}</p>
+          </a>
+        {% endif %}
+      {% endfor %}
     </div>
 
-    <!--Footer-->
-    <div class="pt-28 bg-red-200 flex flex-col gap-10">
-      <!--Quote-->
-      <div class="flex flex-col gap-2 px-10">
-        <div class="flex justify-center">
-          <img
-            src="{% static 'img/coffee2.jpg' %}"
-            alt="coffeecup"
-            class="w-1/4 rounded-full"
-          />
-        </div>
-
-        <div class="flex justify-center">
-          <p class="text-center font-thin text-xl w-1/2">
-            “Coffee is more than a beverage — it’s a daily ritual, a global
-            language, and a moment of pause in a fast-paced world. From bean to
-            brew, it brings people together and awakens the senses.”
-          </p>
-        </div>
-      </div>
-
-      <!--Columns-->
-      <div class="flex justify-between px-10">
-        <!--Quick Links-->
-        <div>
-          <div class="text-xl mb-2">Quick Links</div>
-          <div class="text-gray-500">
-            <a href="menu">Menu</a><br />
-            <a href="about-us">About Us</a><br />
-            <a href="#">Gallery</a><br />
-            <a href="#">FAQ's</a>
-          </div>
-        </div>
-        <!--Service Hours-->
-        <div>
-          <div class="text-xl mb-2">Service Hours</div>
-          <div class="text-gray-500">
-            Mon-Fri: 7AM - 11PM <br />Sat-Sun: 8AM - 10PM
-          </div>
-        </div>
-        <!--Contact Info-->
-        <div>
-          <div class="text-xl mb-2">Contact Hours</div>
-          <div class="text-gray-500">
-            For general questions and concerns, please visit our
-            <a href="#">Customer Service Site.</a><br />Phone: +1
-            (302)-123-1234<br />Email: press@kaffa.com
-          </div>
-        </div>
-      </div>
-
-      <!--Footer Bar-->
-      <div class="flex justify-between bg-amber-950 text-white px-10 py-4">
-        <div class="flex gap-2">
-          <a href="#">
-            <img
-              src="{% static 'img/pinterest.svg' %}"
-              alt="pinterest"
-              class="h-6 w-6 invert"
-            />
+    <h2 class="flex text-5xl font-normal mt-10 mb-5 border-b border-[#604333] pb-4">Breakfast</h2>
+    <div class="grid grid-cols-3 gap-8">
+      {% for item in items %}
+        {% if item.category.name == 'Breakfast' %}
+          <a href={% url 'product' item.id %} class='cursor-pointer'>
+            <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl"></img>
+            <h3 class="text-2xl font-semibold">{{ item.name }}</h3>
+            <p class="text-lg font-medium">${{ item.price }}</p>
           </a>
-          <a href="#">
-            <img
-              src="{% static 'img/facebook.svg' %}"
-              alt="facebook"
-              class="h-6 w-6 invert"
-            />
-          </a>
-          <a href="#">
-            <img
-              src="{% static 'img/instagram.svg' %}"
-              alt="instagram"
-              class="h-6 w-6 invert"
-            />
-          </a>
-          <a href="#">
-            <img
-              src="{% static 'img/x.svg' %}"
-              alt="x"
-              class="h-6 w-6 invert"
-            />
-          </a>
-          <a href="#">
-            <img
-              src="{% static 'img/youtube.svg' %}"
-              alt="youtube"
-              class="h-6 w-6 invert"
-            />
-          </a>
-          <a href="#">
-            <img
-              src="{% static 'img/spotify.svg' %}"
-              alt="spotify"
-              class="h-6 w-6 invert"
-            />
-          </a>
-        </div>
-        <div class="text-sm">
-          &copy;2025 Kaffa Coffee Company. All rights reserved.
-        </div>
-        <div class="text-sm">Privacy Policy | Terms of Use</div>
-      </div>
+        {% endif %}
+      {% endfor %}
     </div>
-  </body>
-</html>
+
+    <h2 class="flex text-5xl font-normal mt-10 mb-5 border-b border-[#604333] pb-4">Snacks</h2>
+    <div class="grid grid-cols-3 gap-8">
+      {% for item in items %}
+        {% if item.category.name == 'Snacks' %}
+          <a href={% url 'product' item.id %} class='cursor-pointer'>
+            <img src=/{{ item.image }} class="w-full h-72 object-cover rounded-xl"></img>
+            <h3 class="text-2xl font-semibold">{{ item.name }}</h3>
+            <p class="text-lg font-medium">${{ item.price }}</p>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content %}
