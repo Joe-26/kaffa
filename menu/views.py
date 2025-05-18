@@ -28,11 +28,18 @@ def cart_view(request):
     for cartItem in cartItems:
         for item in items:
             if cartItem.item.name == item.name:
-                subTotal += float(item.price)*float(cartItem.quantity)
-                cartItemsLoad.append({'id':cartItem.id, 'drink':item.name,'quantity': cartItem.quantity, 'perPrice':float(item.price), 'subSubTotal':float(item.price*cartItem.quantity)})
+                if cartItem.size == 'S':
+                    subTotal += (float(item.price)-0.5)*float(cartItem.quantity)
+                    cartItemsLoad.append({'id':cartItem.id, 'drink':item.name,'size': cartItem.size, 'quantity': cartItem.quantity, 'perPrice':float(item.price)-0.5, 'subSubTotal':(float(item.price)-0.5)*float(cartItem.quantity)})
+                elif cartItem.size == 'M':
+                    subTotal += float(item.price)*float(cartItem.quantity)
+                    cartItemsLoad.append({'id':cartItem.id, 'drink':item.name,'size': cartItem.size, 'quantity': cartItem.quantity, 'perPrice':float(item.price), 'subSubTotal':float(item.price*cartItem.quantity)})
+                else:
+                    subTotal += (float(item.price)+1)*float(cartItem.quantity)
+                    cartItemsLoad.append({'id':cartItem.id, 'drink':item.name,'size': cartItem.size, 'quantity': cartItem.quantity, 'perPrice':float(item.price)+1, 'subSubTotal':(float(item.price)+1)*float(cartItem.quantity)})
     context['cartItems'] = cartItemsLoad
     context['SubTotal'] = round(subTotal, 2)
-    tax_rate = 0.06 # Example tax rate of 3%
+    tax_rate = 0.06 # Example tax rate of 6%
     context['Tax'] = round(subTotal * tax_rate, 2)
     context['Total'] = round(subTotal + (subTotal * tax_rate), 2)
 
@@ -64,7 +71,7 @@ def addToCart(request):
     if request.method == 'POST':
         logged_user = request.POST.get('user_id')
         drink = request.POST.get('product_id')
-        # size = request.POST.get('size')
+        drinkSize = request.POST.get('size')
         quantity = request.POST.get('quantity-input')
         username = get_object_or_404(User, pk=logged_user)
         drinkName = get_object_or_404(Item, pk=drink)
@@ -73,6 +80,7 @@ def addToCart(request):
             cartItem = CartItem(
                 user=username,
                 item=drinkName,
+                size=drinkSize,
                 quantity=quantity
             )
             cartItem.save()
@@ -116,7 +124,7 @@ def confirmOrder(request):
         for cart_item in cart_items:
             sub_total += cart_item.item.price * cart_item.quantity
         
-        tax_rate = 0.06  # Example tax rate of 3% - should ideally be a setting
+        tax_rate = 0.06  # Example tax rate of 6%
         tax_amount = round(float(sub_total) * tax_rate, 2)
         total_amount = round(float(sub_total) + float(tax_amount), 2)
 

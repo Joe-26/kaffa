@@ -17,6 +17,8 @@ class Item(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='theme/static/img/', blank=True, null=True)
+    description = models.CharField(default='Description not available. Coming Soon!')
+    nutrition = models.CharField(default='Nutrition Values not available at the moment.')
 
     def __str__(self):
         return self.name
@@ -24,8 +26,12 @@ class Item(models.Model):
 
 # Cart item model
 class CartItem(models.Model):
+    SIZE_OPTIONS = (
+        ('S', 'Small'),('M', 'Medium'),('L', 'Large'),
+    )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    size = models.CharField(max_length=5, choices=SIZE_OPTIONS, default='M')
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):

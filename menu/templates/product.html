@@ -81,12 +81,9 @@
     <div class="flex w-full justify-center mb-10">
       <div class="w-4/5 flex gap-4">
         <div class="basis-1/2 justify-center px-10">
-          <p class="text-xl">Our rich, full-bodied espresso combined with 
-          bittersweet mocha sauce and steamed milk, then 
-          topped with sweetened whipped cream. The classic 
-          coffee drink that always sweetly satisfies.</p>
+          <p class="text-xl">{{ product.description }}</p>
           <br>
-          <p class="text-lg">370 calories, 35g sugar, 15g fat</p>
+          <p class="text-lg">{{ product.nutrition }}</p>
         </div>
         <!--Select Drink Size-->
         <form method="POST" action="{% url 'addToCart'%}" class="basis-1/2 flex flex-col gap-4 px-10">
@@ -97,19 +94,19 @@
               <img src={% static 'img/small.svg' %} class="h-auto mb-2"/>
               <div class="font-semibold text-center">Small</div>
               <div class="text-center">8 fl oz</div>
-              <input type="radio" name="size">
+              <input type="radio" name="size" value='S'>
             </div>
             <div class="flex flex-col">
               <img src={% static 'img/medium.svg' %} class="h-auto mb-2"/>
               <div class="font-semibold text-center">Medium</div>
               <div class="text-center">12 fl oz</div>
-              <input type="radio" name="size" checked>
+              <input type="radio" name="size" value='M' checked>
             </div>
             <div class="flex flex-col">
               <img src={% static 'img/large.svg' %} class="h-auto mb-2"/>
               <div class="font-semibold text-center">Large</div>
               <div class="text-center">16 fl oz</div>
-              <input type="radio" name="size">
+              <input type="radio" name="size" value='L'>
             </div>
           </div>
           <div>
