@@ -7,10 +7,19 @@ module.exports = {
 
     // Capture HTML files in any 'templates' directory within any app in your project.
     '../../../**/templates/**/*.html',
+    '../../../**/templates/*.html',
+    '../../../base/templates/base.html',
 
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        googleMono: ['Atkinson Hyperlegible Mono', 'sans-serif'],
+        handWrite: ['Mynerve', 'cursive'],
+        boldHead: ['Ranchers', 'sans-serif'],
+        sansBody: ['Ancizar Sans', 'sans-serif']
+      }
+    },
   },
   plugins: [],
 }

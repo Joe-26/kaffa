@@ -1,5 +1,6 @@
+@config "../tailwind.config.js";
 @import "tailwindcss";
-@tailwind utilities;
+
 
 
 /**
@@ -8,5 +9,5 @@
   *
   * If your final CSS file is not being updated after code changes, you may want to broaden or narrow
   * the scope of this path.
+  * @tailwind utilities; 
   */
-@source "../../../**/*.{html,py,js}";
