@@ -11,7 +11,7 @@ Kaffa is a full-stack web application for a modern coffee shop, built with Djang
 *   **Menu Display:** Browse a dynamic menu of coffee, beverages, and other items.
 *   **Product Details:** View detailed information for each menu item.
 *   **Shopping Cart:** Add items to a cart and manage cart contents.
-*   **Order Management:** (Assumed based on "Orders" link) Place orders and view order history.
+*   **Order Management:** Place orders and view order history.
 *   **About Us Page:** Learn more about Kaffa coffee shop.
 *   **Responsive Design:** Styled with Tailwind CSS for a consistent experience across devices.
 *   **Admin Interface:** Django's built-in admin panel for easy management of data (users, products, categories, orders, etc.).
@@ -21,7 +21,7 @@ Kaffa is a full-stack web application for a modern coffee shop, built with Djang
 *   **Backend:**
     *   Python
     *   Django
-    *   Django REST framework (if APIs are planned/used, otherwise remove)
+    *   REST framework
 *   **Frontend:**
     *   HTML
     *   Tailwind CSS (via `django-tailwind`)
