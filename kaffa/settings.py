@@ -133,8 +133,3 @@ AUTH_USER_MODEL = 'users.User'
 LOGIN_URL = 'signin'
 
 LOGIN_REDIRECT_URL = 'home'
-
-# SuperUser
-# Email: joe@gmail.com
-# Username: joe
-# Password: 123
