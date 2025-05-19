@@ -49,6 +49,9 @@ kaffa/
 ├── manage.py       # Django's command-line utility
 └── README.md       # This file
 ```
+## Database Design
+
+<img width="1822" alt="Screenshot 2024-11-07 at 12 35 23 PM" src="https://github.com/user-attachments/assets/794b5176-a39a-4193-b432-88120c31bf15">
 
 ## Setup and Installation
 
