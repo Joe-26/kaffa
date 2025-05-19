@@ -2,6 +2,8 @@
 
 Kaffa is a full-stack web application for a modern coffee shop, built with Django and styled with Tailwind CSS. It aims to provide a seamless online experience for customers to browse the menu, learn about the shop, manage their orders, and for administrators to manage the shop's offerings.
 
+Demo: https://youtu.be/EyMepg06_IY
+
 
 <img width="1822" alt="Screenshot 2024-11-07 at 12 35 23 PM" src="https://github.com/user-attachments/assets/dc3a9b33-00e1-4892-a68e-a110749d4da0">
 
