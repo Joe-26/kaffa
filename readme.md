@@ -65,7 +65,6 @@ kaffa/
     ```bash
     pip install -r requirements.txt
     ```
-    *(Note: You'll need to create a `requirements.txt` file: `pip freeze > requirements.txt`)*
 
 4.  **Install Node.js and npm/yarn** (if not already installed). This is required by `django-tailwind`.
 
@@ -119,15 +118,3 @@ kaffa/
 ---
 
 Happy Kaffanating! ☕
-
-```
-
-**Key things I've included:**
-
-*   **Project Title and Description:** A brief overview.
-*   **Features:** Based on your `base.html` and common coffee shop app features.
-*   **Technologies Used:** Pulled from your `settings.py` and `tailwind.config.js`.
-*   **Project Structure:** A simplified view of a typical Django project like yours.
-*   **Setup and Installation:** Standard steps for a Django project, including `django-tailwind` considerations. I've added a note about creating `requirements.txt`.
-*   **Running the Application:** How to start the dev server and Tailwind.
-*   **Future Enhancements:** Some ideas to inspire further development.
