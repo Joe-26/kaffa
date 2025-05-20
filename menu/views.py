@@ -122,7 +122,12 @@ def confirmOrder(request):
         # Recalculate total amount for security and consistency
         sub_total = 0
         for cart_item in cart_items:
-            sub_total += cart_item.item.price * cart_item.quantity
+            if cart_item.size == 'S':
+                sub_total += (float(cart_item.item.price)-0.50) * float(cart_item.quantity)
+            elif cart_item.size == 'L':
+                sub_total += (float(cart_item.item.price)+1) * float(cart_item.quantity)
+            else:
+                sub_total += float(cart_item.item.price) * float(cart_item.quantity)
         
         tax_rate = 0.06  # Example tax rate of 6%
         tax_amount = round(float(sub_total) * tax_rate, 2)

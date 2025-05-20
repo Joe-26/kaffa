@@ -17,8 +17,8 @@ class Item(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='theme/static/img/', blank=True, null=True)
-    description = models.CharField(default='Description not available. Coming Soon!')
-    nutrition = models.CharField(default='Nutrition Values not available at the moment.')
+    description = models.CharField(max_length=500, default='Description not available. Coming Soon!')
+    nutrition = models.CharField(max_length=500, default='Nutrition Values not available at the moment.')
 
     def __str__(self):
         return self.name
